@@ -60,9 +60,6 @@ fun! s:Info(...)
     endif
 
     call s:InfoExec(file, node)
-    if winheight(2) != -1
-	exe 'resize' &helpheight
-    endif
 endfun
 
 fun! s:InfoExec(file, node, ...)
