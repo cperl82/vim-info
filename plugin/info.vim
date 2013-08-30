@@ -90,7 +90,7 @@ fun! s:InfoExec(file, node, ...)
 	else
 	    let command = 'new'
 	endif
-	silent! exe command "+exe'setlocal''modifiable''noswapfile''buftype=nofile''bufhidden=delete'" escape(bufname, '\ ')
+	silent! exe command escape(bufname, '\ ')
 	setf info
 
 	let cmd = s:infoCmd." '".a:file.a:node."' 2>/dev/null"
@@ -118,6 +118,10 @@ fun! s:InfoExec(file, node, ...)
 	let b:info_last_line = last_line
     endif
     setlocal nomodifiable
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+    setlocal noswapfile
+    setlocal nobuflisted
     if s:InfoFirstLine()
 	exe line
     else
