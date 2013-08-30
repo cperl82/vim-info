@@ -78,7 +78,7 @@ fun! s:InfoExec(file, node, ...)
 	let last_line = line('.')
     endif
     let bufname = s:infoBufferName.a:file.a:node
-    if buflisted(bufname) && a:0 < 2
+    if bufloaded(bufname) && a:0 < 2
 	if &ft == 'info'
 	    silent exe 'b!' escape(bufname, '\ ')
 	else 
